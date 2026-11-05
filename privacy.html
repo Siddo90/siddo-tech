@@ -22,10 +22,10 @@
   <table>
     <tr><th>YouTube <code>youtube.upload</code></th><td>Uploads videos, with their title, description and tags, to the siddo_tech channel.</td></tr>
     <tr><th>YouTube <code>youtube.readonly</code></th><td>Reads the signed-in channel's name once, to confirm the tool is connected to the right channel.</td></tr>
-    <tr><th>Instagram <code>instagram_business_basic</code></th><td>Reads the account's ID and username, to confirm the tool is connected to siddo_tech, and keeps its sign-in token renewed.</td></tr>
-    <tr><th>Instagram <code>instagram_business_content_publish</code></th><td>Publishes Reels, with their caption, to the siddo_tech Instagram account.</td></tr>
+    <tr><th>Instagram <code>instagram_basic</code></th><td>Reads the account's ID and username, to confirm the tool is connected to siddo_tech.</td></tr>
+    <tr><th>Instagram <code>instagram_content_publish</code></th><td>Publishes Reels, with their caption, to the siddo_tech Instagram account.</td></tr>
   </table>
-  <p>To hand a finished video to Instagram, the tool makes that one video file reachable at a temporary, unguessable web address (a Cloudflare tunnel) for the few minutes Instagram takes to fetch it, then closes it. Nothing else is served.</p>
+  <p>Videos are uploaded to Instagram directly. Where that isn't available, the tool makes that one video file reachable at a temporary, unguessable web address (a Cloudflare tunnel) for the few minutes Instagram takes to fetch it, then closes it. Nothing else is served.</p>
 
   <h2>What it stores</h2>
   <p>The sign-in tokens Google and Meta issue to the tool, the account IDs they belong to, and the ID and link of each video it has published. These are kept only on computers the channel owner controls (their own PC and home server), are not uploaded anywhere else, and are not shared with, sold to or used by any third party. The tool reads no data from other users' accounts and uses none of the data it accesses for advertising or analytics.</p>
