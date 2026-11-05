@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Sign-in code · siddo_tech</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #code { display: block; width: 100%; margin: 16px 0; padding: 16px; border: 0; border-radius: 16px; background: var(--tile); color: var(--ink);
+      font: 15px/1.5 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; resize: none; }
+    button { padding: 12px 22px; border: 0; border-radius: 999px; background: var(--grad); color: #000; font: 600 17px "Inter Tight", sans-serif; cursor: pointer; }
+  </style>
+</head>
+<body>
+<main>
+  <a class="lockup" href="./"><img src="avatar.png" alt=""><span class="wm">siddo<span>_tech</span></span></a>
+  <h1>Sign-in code</h1>
+  <div id="ok" hidden>
+    <p class="lede">Meta sent siddo_tech publisher a one-time code. Copy it and run <code>publish.py auth instagram --code &lt;code&gt;</code> within a few minutes.</p>
+    <textarea id="code" rows="5" readonly></textarea>
+    <button id="copy" type="button">Copy code</button>
+  </div>
+  <p id="err" class="lede" hidden></p>
+  <p id="none" class="lede" hidden>This page receives the sign-in code after logging in to siddo_tech publisher through Meta. There is no code in this address.</p>
+  <footer>The code stays in your browser; this page sends it nowhere. · <a href="privacy.html">Privacy policy</a></footer>
+</main>
+<script>
+  const q = new URLSearchParams(location.search);
+  const code = q.get("code"), err = q.get("error_description") || q.get("error");
+  if (code) {
+    document.getElementById("ok").hidden = false;
+    document.getElementById("code").value = code;
+    document.getElementById("copy").onclick = async () => {
+      const b = document.getElementById("copy");
+      try { await navigator.clipboard.writeText(code); b.textContent = "Copied"; }
+      catch (e) { document.getElementById("code").select(); b.textContent = "Press Ctrl+C"; }
+    };
+  } else if (err) {
+    const p = document.getElementById("err"); p.hidden = false; p.textContent = "Meta returned an error: " + err;
+  } else {
+    document.getElementById("none").hidden = false;
+  }
+</script>
+</body>
+</html>
